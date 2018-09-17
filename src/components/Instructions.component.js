@@ -13,14 +13,21 @@ class Instructions extends Component {
             alt="h4i logo"
           />
         ) : null}
-        <ul>{this.getItems(this.props.items)}</ul>
+        <ul>
+          {this.props.items
+            .filter(function(item) {
+              return item.length >= 3
+            })
+            .map(function(item, index) {
+              if (index % 2 === 1) {
+                return <li>{item.toUpperCase()}</li>
+              } else {
+                return <li>{item}</li>
+              }
+            })}
+        </ul>
       </div>
     )
-  }
-
-  getItems(items) {
-    var jsx_arr = []
-    return null
   }
 }
 
