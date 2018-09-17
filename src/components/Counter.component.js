@@ -4,7 +4,7 @@ class Counter extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      count: 0
+      count: this.props.count
     }
     this.increment = () => {
       this.setState({
@@ -15,6 +15,14 @@ class Counter extends Component {
     this.decrement = () => {
       this.setState({
         count: this.state.count - 1
+      })
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.count !== this.props.count) {
+      this.setState({
+        count: this.props.count
       })
     }
   }
